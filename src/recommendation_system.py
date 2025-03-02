@@ -17,3 +17,8 @@ def svd_recommendation(user_movie_matrix, num_components=20):
     matrix_svd = svd.fit_transform(user_movie_matrix)
     cosine_sim = cosine_similarity(matrix_svd)
     return cosine_sim
+
+def hybrid_recommendation(user_movie_matrix, content_sim, collaborative_sim, alpha=0.5):
+    hybrid_sim = alpha * collaborative_sim + (1 - alpha) * content_sim
+    return hybrid_sim
+
